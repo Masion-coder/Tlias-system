@@ -13,40 +13,48 @@ import com.tlias.module.Result;
 import com.tlias.service.DeptService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 
 
+@RequestMapping("/depts")
 @RestController
 public class DeptController {
     @Autowired
     private DeptService deptService;
     
-    @GetMapping("/depts")
+    @GetMapping
     public Result findAll() {
         System.out.println("查询全部部门数据");
         List<Dept> deptList =  deptService.findAll();
         return Result.success(deptList);
     }
 
-    @DeleteMapping("/depts")
+    @DeleteMapping
     public Result delete(Integer id) {
         System.out.println("删除部门:" + id);
         deptService.deleteById(id);
         return Result.success();
     }
 
-    @PostMapping("/depts")
+    @PostMapping
     public Result add(@RequestBody Dept dept) {
         System.out.println("添加部门:" + dept);
         deptService.add(dept);
         return Result.success();
     }
     
-    @GetMapping("/depts/{id}")
+    @GetMapping("/{id}")
     public Result getInfo(@PathVariable Integer id) {
         System.out.println("根据id查询部门:" + id);
         return Result.success(deptService.getById(id));
     }
     
+    @PutMapping
+    public Result update(@RequestBody Dept dept) {
+        System.out.println("更新部门:" + dept);
+        deptService.update(dept);
+        return Result.success();
+    }
 }
