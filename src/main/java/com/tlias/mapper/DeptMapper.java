@@ -3,6 +3,7 @@ package com.tlias.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -29,4 +30,7 @@ public interface DeptMapper {
      */
     @Delete("delete from dept where id = #{id}")
     void deleteById(Integer id);
+
+    @Insert("insert into dept(name, create_Time, update_Time) values (#{name}, #{createTime}, #{updateTime})")
+    void insert(Dept dept);
 }

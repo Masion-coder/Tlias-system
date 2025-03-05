@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tlias.module.Dept;
 import com.tlias.module.Result;
 import com.tlias.service.DeptService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 public class DeptController {
@@ -29,4 +32,12 @@ public class DeptController {
         deptService.deleteById(id);
         return Result.success();
     }
+
+    @PostMapping("/depts")
+    public Result add(@RequestBody Dept dept) {
+        System.out.println("添加部门:" + dept);
+        deptService.add(dept);
+        return Result.success();
+    }
+    
 }
