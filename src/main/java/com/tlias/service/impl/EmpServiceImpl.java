@@ -1,10 +1,10 @@
 package com.tlias.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.tlias.mapper.EmpMapper;
 import com.tlias.module.Emp;
 import com.tlias.module.PageResult;
@@ -15,14 +15,16 @@ public class EmpServiceImpl implements EmpService {
     @Autowired
     private EmpMapper empMapper;
 
+    /*
+     * 注意：
+     *      1.使用PageHelper时， 定义的sql结尾不能加分号
+     *      2.PageHelper仅仅能对紧跟在其后的第一个sql进行分页处理，后续的sql不会被分页处理
+     */
     @Override
     public PageResult<Emp> page(Integer page, Integer pageSize) {
-        // 1. 查询总记录数
-        Long total = empMapper.count();
-        // 2. 查询分页数据
-        List<Emp> rows = empMapper.list((page - 1) * pageSize, pageSize);
-        // 3. 封装到 PageResult 对象中并返回
-        return new PageResult<Emp>(total, rows);
+        PageHelper.startPage(page, pageSize);
+        Page<Emp> p = (Page<Emp>) empMapper.list();
+        return new PageResult<Emp>(p.getTotal(), p.getResult());
     }
     
 }
