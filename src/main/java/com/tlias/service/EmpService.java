@@ -1,8 +1,7 @@
 package com.tlias.service;
 
-import java.time.LocalDate;
-
 import com.tlias.module.Emp;
+import com.tlias.module.EmpQueryParam;
 import com.tlias.module.PageResult;
 
 public interface EmpService {
@@ -13,6 +12,6 @@ public interface EmpService {
      * 
      * @param pageSize 每页记录数
      */
-    PageResult<Emp> page(String name, Integer gender, LocalDate begin, LocalDate end, Integer page, Integer pageSize);
+    PageResult<Emp> page(EmpQueryParam empQueryParam);
 
 }
