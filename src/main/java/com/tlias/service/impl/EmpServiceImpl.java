@@ -1,5 +1,7 @@
 package com.tlias.service.impl;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,16 @@ public class EmpServiceImpl implements EmpService {
         PageHelper.startPage(empQueryParam.getPage(), empQueryParam.getPageSize());
         Page<Emp> p = (Page<Emp>) empMapper.list(empQueryParam);
         return new PageResult<Emp>(p.getTotal(), p.getResult());
+    }
+
+    @Override
+    public void save(Emp emp) {
+        // 1.保存员工基本信息
+        emp.setCreateTime(LocalDateTime.now());
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.insert(emp);
+
+        // 1.保存员工工作经历信息
     }
     
 }

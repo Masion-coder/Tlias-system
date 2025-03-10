@@ -2,6 +2,8 @@ package com.tlias.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,5 +31,15 @@ public class EmpController {
         log.info("分页查询:{}", empQueryParam);
         PageResult<Emp> pageResult = empService.page(empQueryParam);
         return Result.success(pageResult);
+    }
+
+    /*
+     * 新增员工
+     */
+    @PostMapping
+    public Result save(@RequestBody Emp emp) {
+        log.info("新增员工");
+        empService.save(emp);
+        return Result.success();
     }
 }
