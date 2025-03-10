@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tlias.mapper.EmpExprMapper">
+<!-- 
+    foreach标签:
+        collection：指定集合的名称
+        item：指定集合中元素的名称
+        separator：指定分隔符
+ -->
+    <insert id="insertBatch">
+        insert into emp_expr(emp_id, begin, end, company, job) values
+        <foreach collection="exprList" item="expr" separator=",">
+            (#{expr.id}, #{expr.begin}, #{expr.end}, #{expr.company}, #{expr.job})
+        </foreach>
+    </insert>
+</mapper>

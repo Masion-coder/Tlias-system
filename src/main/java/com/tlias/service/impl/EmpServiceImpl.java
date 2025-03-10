@@ -1,14 +1,18 @@
 package com.tlias.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.tlias.mapper.EmpExprMapper;
 import com.tlias.mapper.EmpMapper;
 import com.tlias.module.Emp;
+import com.tlias.module.EmpExpr;
 import com.tlias.module.EmpQueryParam;
 import com.tlias.module.PageResult;
 import com.tlias.service.EmpService;
@@ -17,6 +21,9 @@ import com.tlias.service.EmpService;
 public class EmpServiceImpl implements EmpService {
     @Autowired
     private EmpMapper empMapper;
+    
+    @Autowired
+    private EmpExprMapper empExprMapper;
 
     /*
      * 注意：
@@ -38,6 +45,13 @@ public class EmpServiceImpl implements EmpService {
         empMapper.insert(emp);
 
         // 1.保存员工工作经历信息
+        List<EmpExpr> exprList = emp.getExprList();
+        if (!CollectionUtils.isEmpty(exprList)) {
+            // 遍历集合，设置员工id
+            exprList.forEach(empExpr -> {
+                empExpr.setId(emp.getId());
+            });
+            empExprMapper.insertBatch(exprList);
+        }
     }
-    
 }
