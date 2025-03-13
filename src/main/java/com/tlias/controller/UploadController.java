@@ -20,13 +20,14 @@ public class UploadController {
     private UploadService uploadService;
 
     @PostMapping("/upload")
-    public Result upload(String name, Integer age, MultipartFile file) {
+    public Result upload(MultipartFile file) {
+        log.info("文件上传:{}", file.getOriginalFilename());
         try {
-            uploadService.upload(file);
+            String url = uploadService.upload(file);
+            return Result.success(url);
         } catch (Exception e) {
             log.error(e.toString());
             return Result.error("上传失败");
         }
-        return Result.success();
     }
 }

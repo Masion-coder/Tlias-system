@@ -30,3 +30,4 @@ logging:
 
 prop:
   upload-folder: C:/Source Code/Java/Web/Tlias-smart-learning-assistant-system/upload/
+  download-folder: http://localhost:8080/
