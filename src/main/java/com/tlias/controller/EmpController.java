@@ -62,6 +62,7 @@ public class EmpController {
     @DeleteMapping
     public Result delete(@RequestParam List<Integer> ids) {
         log.info("根据id批量删除员工:{}", ids.toString());
+        empService.delete(ids);
         return Result.success();
     }
 }

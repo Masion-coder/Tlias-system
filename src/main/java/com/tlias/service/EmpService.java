@@ -1,5 +1,7 @@
 package com.tlias.service;
 
+import java.util.List;
+
 import com.tlias.model.Emp;
 import com.tlias.model.EmpQueryParam;
 import com.tlias.model.PageResult;
@@ -15,5 +17,7 @@ public interface EmpService {
     PageResult<Emp> page(EmpQueryParam empQueryParam);
 
     void save(Emp emp);
+
+    void delete(List<Integer> ids);
 
 }
