@@ -18,3 +18,7 @@ mybatis:
 logging:
     level:    
       '[org.springframework.jdbc.support.JdbcTransactionManager]': debug
+
+prop:
+  # upload-folder: C:/Source Code/Java/Web/Tlias-smart-learning-assistant-system/upload/
+  upload-folder: ./upload/
