@@ -1,4 +1,4 @@
-package com.tlias.module;
+package com.tlias.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

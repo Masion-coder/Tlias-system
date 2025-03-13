@@ -1,4 +1,4 @@
-package com.tlias.module;
+package com.tlias.model;
 
 import java.util.List;
 

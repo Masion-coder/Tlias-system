@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.tlias.module.Dept;
+import com.tlias.model.Dept;
 
 @Mapper
 public interface DeptMapper {

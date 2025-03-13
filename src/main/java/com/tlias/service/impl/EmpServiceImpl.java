@@ -12,11 +12,11 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.tlias.mapper.EmpExprMapper;
 import com.tlias.mapper.EmpMapper;
-import com.tlias.module.Emp;
-import com.tlias.module.EmpExpr;
-import com.tlias.module.EmpLog;
-import com.tlias.module.EmpQueryParam;
-import com.tlias.module.PageResult;
+import com.tlias.model.Emp;
+import com.tlias.model.EmpExpr;
+import com.tlias.model.EmpLog;
+import com.tlias.model.EmpQueryParam;
+import com.tlias.model.PageResult;
 import com.tlias.service.EmpLogService;
 import com.tlias.service.EmpService;
 

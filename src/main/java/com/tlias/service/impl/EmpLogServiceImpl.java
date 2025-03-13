@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tlias.mapper.EmpLogMapper;
-import com.tlias.module.EmpLog;
+import com.tlias.model.EmpLog;
 import com.tlias.service.EmpLogService;
 
 @Service

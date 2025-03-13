@@ -3,7 +3,7 @@ package com.tlias.mapper;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
-import com.tlias.module.EmpLog;
+import com.tlias.model.EmpLog;
 
 @Mapper
 public interface EmpLogMapper {

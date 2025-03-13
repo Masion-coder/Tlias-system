@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.tlias.module.EmpExpr;
+import com.tlias.model.EmpExpr;
 
 /*
  * 员工工作经历

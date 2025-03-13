@@ -1,8 +1,8 @@
 package com.tlias.service;
 
-import com.tlias.module.Emp;
-import com.tlias.module.EmpQueryParam;
-import com.tlias.module.PageResult;
+import com.tlias.model.Emp;
+import com.tlias.model.EmpQueryParam;
+import com.tlias.model.PageResult;
 
 public interface EmpService {
     /*

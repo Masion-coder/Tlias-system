@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tlias.module.Dept;
-import com.tlias.module.Result;
+import com.tlias.model.Dept;
+import com.tlias.model.Result;
 import com.tlias.service.DeptService;
 
 import lombok.extern.slf4j.Slf4j;

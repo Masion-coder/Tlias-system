@@ -7,6 +7,15 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
+  web:
+    resources:
+      static-locations:
+      - classpath:/static/
+      - file:C:/Source Code/Java/Web/Tlias-smart-learning-assistant-system/upload/
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
 
 # MyBatis配置
 mybatis:
@@ -20,5 +29,4 @@ logging:
       '[org.springframework.jdbc.support.JdbcTransactionManager]': debug
 
 prop:
-  # upload-folder: C:/Source Code/Java/Web/Tlias-smart-learning-assistant-system/upload/
-  upload-folder: ./upload/
+  upload-folder: C:/Source Code/Java/Web/Tlias-smart-learning-assistant-system/upload/

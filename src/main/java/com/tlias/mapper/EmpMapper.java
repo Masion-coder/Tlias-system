@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 
-import com.tlias.module.Emp;
-import com.tlias.module.EmpQueryParam;
+import com.tlias.model.Emp;
+import com.tlias.model.EmpQueryParam;
 
 /*
  * 员工信息

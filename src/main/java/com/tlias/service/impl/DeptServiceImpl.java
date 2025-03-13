@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tlias.mapper.DeptMapper;
-import com.tlias.module.Dept;
+import com.tlias.model.Dept;
 import com.tlias.service.DeptService;
 
 @Service

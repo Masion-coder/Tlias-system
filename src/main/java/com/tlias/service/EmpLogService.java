@@ -1,6 +1,6 @@
 package com.tlias.service;
 
-import com.tlias.module.EmpLog;
+import com.tlias.model.EmpLog;
 
 public interface EmpLogService {
     public void insertLog(EmpLog empLog);

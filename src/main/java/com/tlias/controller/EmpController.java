@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tlias.module.Emp;
-import com.tlias.module.EmpQueryParam;
-import com.tlias.module.PageResult;
-import com.tlias.module.Result;
+import com.tlias.model.Emp;
+import com.tlias.model.EmpQueryParam;
+import com.tlias.model.PageResult;
+import com.tlias.model.Result;
 import com.tlias.service.EmpService;
 
 import lombok.extern.slf4j.Slf4j;
