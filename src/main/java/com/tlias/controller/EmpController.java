@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.tlias.model.Emp;
 import com.tlias.model.EmpQueryParam;
 import com.tlias.model.PageResult;
@@ -26,7 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/emps")
 public class EmpController {
-
     @Autowired
     private EmpService empService;
 
@@ -64,5 +63,15 @@ public class EmpController {
         log.info("根据id批量删除员工:{}", ids.toString());
         empService.delete(ids);
         return Result.success();
+    }
+
+    /*
+     * 根据id 查询员工信息
+     */
+    @GetMapping("/{id}")
+    public Result getInfo(@PathVariable Integer id) {
+        log.info("根据id 查询员工信息：{}", id);
+        Emp emp = empService.getInfo(id);
+        return Result.success(emp);
     }
 }

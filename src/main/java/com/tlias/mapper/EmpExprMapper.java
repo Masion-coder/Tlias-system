@@ -3,6 +3,7 @@ package com.tlias.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import com.tlias.model.EmpExpr;
 
@@ -17,4 +18,7 @@ public interface EmpExprMapper {
     public void insertBatch(List<EmpExpr> exprList);
 
     public void deleteByEmpIds(List<Integer> empIds);
+
+    @Select("select * from emp_expr where emp_id = #{empId}")
+    public List<EmpExpr> getByEmpId(Integer empId);
 }

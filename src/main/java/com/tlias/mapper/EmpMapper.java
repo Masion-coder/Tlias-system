@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
 
 import com.tlias.model.Emp;
 import com.tlias.model.EmpQueryParam;
@@ -22,4 +23,7 @@ public interface EmpMapper {
     public void insert(Emp emp);
 
     public void deleteByIds(List<Integer> ids);
+
+    @Select("select * from emp where id = #{id}")
+    public Emp getById(Integer id);
 }
