@@ -1,6 +1,7 @@
 package com.tlias.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,7 @@ public class EmpServiceImpl implements EmpService {
         }
     }
 
-    @Transactional(rollbackFor = {Exception.class})
+    @Transactional(rollbackFor = { Exception.class })
     @Override
     public void delete(List<Integer> ids) {
         // 1.批量删除员工基本信息
@@ -84,5 +85,26 @@ public class EmpServiceImpl implements EmpService {
         List<EmpExpr> exprList = empExprMapper.getByEmpId(id);
         emp.setExprList(exprList);
         return emp;
+    }
+
+    @Transactional(rollbackFor = { Exception.class })
+    @Override
+    public void update(Emp emp) {
+        // 1.根据ID修改员工的基本信息
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.updateById(emp);
+
+        // 2.根据ID修改员工的工作经历信息
+        // 2.1先根据员工ID，删除原有的工作经历
+        empExprMapper.deleteByEmpIds(Arrays.asList(emp.getId()));
+
+        // 2.2再添加新的工作经历
+        List<EmpExpr> exprList = emp.getExprList();
+        if (!CollectionUtils.isEmpty(exprList)) {
+            exprList.forEach(expr -> {
+                expr.setId(emp.getId());
+            });
+            empExprMapper.insertBatch(exprList);
+        }
     }
 }

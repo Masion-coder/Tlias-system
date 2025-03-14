@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -73,5 +74,15 @@ public class EmpController {
         log.info("根据id 查询员工信息：{}", id);
         Emp emp = empService.getInfo(id);
         return Result.success(emp);
+    }
+
+    /*
+     * 更新员工信息
+     */
+    @PutMapping
+    public Result update(@RequestBody Emp emp) {
+        log.info("更新员工信息：{}", emp);
+        empService.update(emp);
+        return Result.success();
     }
 }
