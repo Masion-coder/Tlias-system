@@ -95,12 +95,11 @@ public class EmpServiceImpl implements EmpService {
         empMapper.updateById(emp);
 
         // 2.根据ID修改员工的工作经历信息
-        // 2.1先根据员工ID，删除原有的工作经历
-        empExprMapper.deleteByEmpIds(Arrays.asList(emp.getId()));
-
-        // 2.2再添加新的工作经历
         List<EmpExpr> exprList = emp.getExprList();
         if (!CollectionUtils.isEmpty(exprList)) {
+            // 2.1先根据员工ID，删除原有的工作经历
+            empExprMapper.deleteByEmpIds(Arrays.asList(emp.getId()));
+            // 2.2再添加新的工作经历
             exprList.forEach(expr -> {
                 expr.setId(emp.getId());
             });
