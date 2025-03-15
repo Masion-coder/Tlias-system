@@ -2,6 +2,9 @@ spring:
   application:
     name: Tlias-smart- learning-assistant-system
   # 数据库连接配置
+  sql:
+    init:
+      encoding: utf-8
   datasource:
     url: jdbc:mysql://localhost:3306/tlias
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -23,10 +26,26 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # 开启驼峰命名转换
     map-underscore-to-camel-case: true
+
 # 配置事务管理日志级别
 logging:
-    level:    
-      '[org.springframework.jdbc.support.JdbcTransactionManager]': debug
+  charset:
+    file: utf-8
+    console: utf-8
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}-%msg%n'
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n'
+  level:
+    root: info
+  logback:
+    rollingpolicy:
+      # 日志文件输出的文件名, %i表示序号
+      file-name-pattern: ./log/tlias-%d{yyyy-MM-dd}-%i.log
+      # 最多保留的历史日志文件数量
+      max-history: 30
+      # 最大文件大小，超过这个大小会触发滚动到新文件，默认为 10MB
+      max-file-size: 10MB
+  config: classpath:/logback-spring.xml
 
 prop:
   upload-folder: C:/Source Code/Java/Web/Tlias-smart-learning-assistant-system/upload/

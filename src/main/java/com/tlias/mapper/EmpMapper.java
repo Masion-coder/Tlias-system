@@ -1,6 +1,7 @@
 package com.tlias.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,4 +29,6 @@ public interface EmpMapper {
     public Emp getById(Integer id);
 
     public void updateById(Emp emp);
+
+    List<Map<String, Object>> countEmpJobData();
 }
