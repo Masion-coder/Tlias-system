@@ -26,4 +26,9 @@ public class ReportServiceImpl implements ReportService {
         List<Object> dataList = list.stream().map(data -> data.get("num")).toList();
         return new JobOption(jobList, dataList);
     }
+
+    @Override
+    public List<Map<String, Object>> getEmpGenderData() {
+        return empMapper.countEmpGenderData();
+    }
 }

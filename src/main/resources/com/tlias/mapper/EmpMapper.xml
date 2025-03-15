@@ -60,4 +60,14 @@
         group by job
         order by num
     </select>
+
+    <!-- countEmpGenderData --> 
+
+    <select id="countEmpGenderData">
+        select
+            if (gender = 1, '男性员工', '女性员工') name,
+            count(*) value
+        from emp
+        group by gender
+    </select>
 </mapper>

@@ -31,4 +31,6 @@ public interface EmpMapper {
     public void updateById(Emp emp);
 
     List<Map<String, Object>> countEmpJobData();
+
+    public List<Map<String, Object>> countEmpGenderData();
 }
