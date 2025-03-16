@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tlias.model.Emp;
 import com.tlias.model.EmpQueryParam;
+import com.tlias.model.LoginInfo;
 import com.tlias.model.PageResult;
 
 public interface EmpService {
@@ -24,4 +25,5 @@ public interface EmpService {
 
     void update(Emp emp);
 
+    LoginInfo login(Emp emp);
 }

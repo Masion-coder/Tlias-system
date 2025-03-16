@@ -17,10 +17,14 @@ import com.tlias.model.Emp;
 import com.tlias.model.EmpExpr;
 import com.tlias.model.EmpLog;
 import com.tlias.model.EmpQueryParam;
+import com.tlias.model.LoginInfo;
 import com.tlias.model.PageResult;
 import com.tlias.service.EmpLogService;
 import com.tlias.service.EmpService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class EmpServiceImpl implements EmpService {
     @Autowired
@@ -105,5 +109,19 @@ public class EmpServiceImpl implements EmpService {
             });
             empExprMapper.insertBatch(exprList);
         }
+    }
+
+    @Override
+    public LoginInfo login(Emp emp) {
+        // 1.调用mapper接口，根据用户名查询员工信息
+        Emp e = empMapper.selectByUsernameAndPassword(emp);
+        // 2.判断查询的员工信息是否存在， 如存在，组装登录信息
+        if (e != null) {
+            log.info("登录成功：{}", e);
+            LoginInfo loginInfo = new LoginInfo(e.getId(), e.getUsername(), e.getName(), "");
+            return loginInfo;
+        }
+        // 3.不存在，返回null
+        return null;
     }
 }

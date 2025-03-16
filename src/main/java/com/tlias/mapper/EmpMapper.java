@@ -33,4 +33,7 @@ public interface EmpMapper {
     List<Map<String, Object>> countEmpJobData();
 
     public List<Map<String, Object>> countEmpGenderData();
+
+    @Select("select id, username, name from emp where username = #{username} and password = #{password}")
+    public Emp selectByUsernameAndPassword(Emp emp);
 }
