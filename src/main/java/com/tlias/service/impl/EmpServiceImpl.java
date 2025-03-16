@@ -2,7 +2,9 @@ package com.tlias.service.impl;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,7 @@ import com.tlias.model.LoginInfo;
 import com.tlias.model.PageResult;
 import com.tlias.service.EmpLogService;
 import com.tlias.service.EmpService;
+import com.tlias.util.JwtUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -118,7 +121,12 @@ public class EmpServiceImpl implements EmpService {
         // 2.判断查询的员工信息是否存在， 如存在，组装登录信息
         if (e != null) {
             log.info("登录成功：{}", e);
-            LoginInfo loginInfo = new LoginInfo(e.getId(), e.getUsername(), e.getName(), "");
+            // 生成JWT 令牌
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("id", e.getId());
+            claims.put("username", e.getUsername());
+            String jwt = JwtUtils.generateToken(claims);
+            LoginInfo loginInfo = new LoginInfo(e.getId(), e.getUsername(), e.getName(), jwt);
             return loginInfo;
         }
         // 3.不存在，返回null
