@@ -3,6 +3,7 @@ package com.tlias.aop;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Aspect
 @Component
+@Order(1) // 优先级，值越小，优先级越高
 public class RecondTimeAspect {
     @Around("execution(* com.tlias.service.impl.*.*(..))")
     public Object recondTime(ProceedingJoinPoint pjp) throws Throwable {
