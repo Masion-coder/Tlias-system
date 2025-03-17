@@ -1,5 +1,8 @@
 package com.tlias.aop;
 
+import java.util.Arrays;
+
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -25,8 +28,19 @@ public class MyAspect {
      * 前置通知 - 目标方法执行前执行
      */
     @Before("pt()")
-    public void before(){
+    public void before(JoinPoint jp){
         log.info("前置通知");
+        // 1.获取目标对象
+        log.info("获取目标对象：{}", jp.getTarget());
+
+        // 2.获取目标类
+        log.info("获取目标类：{}", jp.getTarget().getClass().getName());
+
+        // 3.获取目标方法
+        log.info("获取目标方法：{}", jp.getSignature().getName());
+
+        // 4.获取目标方法的参数
+        log.info("获取目标方法的参数：{}", Arrays.toString(jp.getArgs()));
     }
 
     /*
