@@ -11,7 +11,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import lombok.extern.slf4j.Slf4j;
 
-@WebFilter("/*") // 拦截所有请求
+// @WebFilter("/*") // 拦截所有请求
 @Slf4j
 public class DemoFilter implements Filter {
 
