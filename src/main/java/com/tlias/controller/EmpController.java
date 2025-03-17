@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.tlias.annotations.Log;
 import com.tlias.model.Emp;
 import com.tlias.model.EmpQueryParam;
 import com.tlias.model.PageResult;
@@ -40,6 +42,7 @@ public class EmpController {
     /*
      * 新增员工
      */
+    @Log
     @PostMapping
     public Result save(@RequestBody Emp emp) {
         log.info("新增员工");
@@ -59,6 +62,7 @@ public class EmpController {
     /*
      * 删除员工 - list集合接收(要加@RequestParam注解)
      */
+    @Log
     @DeleteMapping
     public Result delete(@RequestParam List<Integer> ids) {
         log.info("根据id批量删除员工:{}", ids.toString());
@@ -79,6 +83,7 @@ public class EmpController {
     /*
      * 更新员工信息
      */
+    @Log
     @PutMapping
     public Result update(@RequestBody Emp emp) {
         log.info("更新员工信息：{}", emp);
