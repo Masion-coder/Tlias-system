@@ -5,14 +5,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.tlias.interceptor.DemoInterceptor;
+import com.tlias.interceptor.TokenInterceptor;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+    // @Autowired
+    // private DemoInterceptor demoInterceptor;
     @Autowired
-    private DemoInterceptor demoInterceptor;
+    private TokenInterceptor tokenInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(demoInterceptor).addPathPatterns("/**"); // 拦截所有请求
+        registry.addInterceptor(tokenInterceptor).addPathPatterns("/**"); // 拦截所有请求
     }
 }
